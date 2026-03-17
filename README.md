@@ -44,7 +44,7 @@ Jenkins (docker01, on-prem)
 | IAM Role | JenkinsLabRole — scoped permissions for CI/CD operations |
 | Profile | JenkinsProfile — maps cert subject to role assumption |
 | Signing Helper | aws_signing_helper binary — handles STS credential exchange |
-| Jenkins Host | docker01 (192.168.0.102) — Ubuntu VM running Jenkins in Docker |
+| Jenkins Host | docker — Ubuntu VM running Jenkins in Docker |
 
 ## Custom Dockerfile
 
@@ -71,9 +71,9 @@ stage('AWS Auth') {
             aws_signing_helper credential-process \
                 --certificate /var/jenkins_home/certs/jenkins.crt \
                 --private-key /var/jenkins_home/certs/jenkins.key \
-                --trust-anchor-arn arn:aws:rolesanywhere:us-east-1:640168421612:trust-anchor/... \
-                --profile-arn arn:aws:rolesanywhere:us-east-1:640168421612:profile/... \
-                --role-arn arn:aws:iam::640168421612:role/JenkinsLabRole
+                --trust-anchor-arn arn:aws:rolesanywhere:us-east-1:YourAccout#:trust-anchor/... \
+                --profile-arn arn:aws:rolesanywhere:us-east-1:YourAccout#::profile/... \
+                --role-arn arn:aws:iam::YourAccout#::role/JenkinsLabRole
         '''
     }
 }
